@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Post({ name, comment, avatar, time }) {
+export default function Bost({ name, comment, avatar, time, children }) {
   const [count, setCount] = useState(0);
   return (
     <div className="comment">
@@ -12,6 +12,7 @@ export default function Post({ name, comment, avatar, time }) {
         <sapn>{count}</sapn>
         <div className="comment-time">{time}</div>
       </div>
+      {children}
     </div>
   );
 }

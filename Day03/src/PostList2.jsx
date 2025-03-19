@@ -1,32 +1,34 @@
 import React, { useState } from "react";
 import "./postList.css";
-import {posts} from "./post.js";
+import Bost from "./Post";
+import posts from "./ThemePost";
 
-const Post = ({ name, comment, avatar, time }) => {
-  return (
-    <div className="comment">
-      <img src={avatar} alt="user-avatar" className="avatar" />
-      <div className="comment-details">
-        <div className="user-name">{name}</div>
-        <div className="comment-text">{comment}</div>
-        <div className="comment-time">{time}</div>
-      </div>
-    </div>
-  );
-};
-
-export default function PostList2() {
-    const [comments, setComments] = useState(posts);
+export default function PostList() {
+  const [count, setCount] = useState(0);
+  const [postList, setPostList] = useState(posts);
   return (
     <div className="comment-list">
-      {posts.map((comment, index) => (
-        <Post
-          key={index}
-          name={comment.name}
-          comment={comment.comment}
-          time={comment.time}
-          avatar={comment.avatar}
-        />
+      {postList.map((comment, index) => (
+        <>
+          <Bost
+            key={index}
+            name={comment.name}
+            comment={comment.comment}
+            time={comment.time}
+            avatar={comment.avatar}
+          >
+            <button
+              className="delete"
+              onClick={() => {
+                let copy = [...postList];
+                copy = copy.filter((_, i) => i !== index);
+                setPostList(copy);
+              }}
+            >
+              삭제
+            </button>
+          </Bost>
+        </>
       ))}
     </div>
   );

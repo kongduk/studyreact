@@ -28,3 +28,5 @@ export const posts = [
       isLike : 0
     },
   ];
+
+  export default posts;
