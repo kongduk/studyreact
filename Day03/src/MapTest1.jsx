@@ -14,15 +14,22 @@ export default function MapTest1() {
     <>
       <h1>foo 배열 출력하기</h1>
       <ul>
+        {/* <li>{foo[0]}</li>
         {foo.map((item, index) => (
           <li key={index}>{item}</li>
+        ))} */}
+        {foo.map((item) => (
+          <li>{item}</li>
         ))}
       </ul>
       <h1>차고에 있는 차 목록</h1>
       <ul>
         {/*cars 배열 요소를 Car컴포넌트의 brand로 전송하여 컴포넌트 리턴 */}
-        {cars.map((car, index) => (
+        {/* {cars.map((car, index) => (
           <Car key={index} brand={car} />
+        ))} */}
+        {cars.map((car) => (
+          <Car brand = {car} />
         ))}
       </ul>
     </>
