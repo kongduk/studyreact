@@ -1,6 +1,6 @@
 import MapTest1 from './MapTest1'
 import MapTest2 from './MapTest2'
-import Message from './Message'
+import MessageList from './MessageList'
 import PackingList from './ConditionJsx1'
 import PackingList2 from './ConditionJsx2'
 import MapTest3 from './MapTest3'
@@ -14,11 +14,11 @@ export default function App() {
     <div>
       {/* <MapTest1 /> */}
       {/* <MapTest2 /> */}
-      {/* <Message /> */}
+      <MessageList />
       {/* <PackingList /> */}
       {/* <MapTest3 /> */}
       {/* <MapTest4 /> */}
-      <PostList2 />
+      {/* <PostList2 /> */}
     </div>
   )
 }

@@ -8,7 +8,11 @@ const msgLists = [
 ];
 
 const MessageList = () => {
-    return <Message messages={msgLists} />;
+    return (
+        <div className="message-list-wrapper">
+            <Message messages={msgLists} />
+        </div>
+    );
 };
 
 export default MessageList;
