@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-    <InputTest2 />
+    <InputTest1 />
     </>
   )
 }
