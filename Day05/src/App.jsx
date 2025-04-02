@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import ProfileForm from './ProFileForm'
 import ProfileFormImmer from './ProfileFormImmer'
+import UserAdd from './UserAdd'
+import UseRefAdd from './UseRefAdd'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
     {/* <ProfileForm /> */}
-    <ProfileFormImmer />
+    {/* <ProfileFormImmer /> */}
+    {/* <UseRefAdd /> */}
+    <UserAdd />
     </>
   )
 }
