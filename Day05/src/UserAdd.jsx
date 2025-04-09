@@ -93,6 +93,7 @@ export default function UserAdd() {
 
   const { name, email } = inputs;
   const nextId = useRef(4);
+  const [editingId, setEditingId] = useState(null); // 수정 중인 사용자 ID 저장
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -103,20 +104,30 @@ export default function UserAdd() {
   };
 
   const onCreate = () => {
-    nextId.current += 1;
-    const user1 = {
-      id: nextId.current,
-      name,
-      email,
-      selected: false,
-    };
-    setUsers([...users, user1]);
+    if (editingId !== null) {
+      // 수정 중이라면 저장
+      setUsers(prevUsers =>
+        prevUsers.map(user =>
+          user.id === editingId ? { ...user, name, email } : user
+        )
+      );
+      setEditingId(null); // 수정 모드 종료
+    } else {
+      // 새 사용자 추가
+      nextId.current += 1;
+      const newUser = {
+        id: nextId.current,
+        name,
+        email,
+        selected: false,
+      };
+      setUsers([...users, newUser]);
+    }
     setInputs({ name: "", email: "" });
   };
 
   const onRemove = (id) => {
-    const removedUsers = users.filter((user) => user.id !== id);
-    setUsers(removedUsers);
+    setUsers(users.filter((user) => user.id !== id));
   };
 
   const onToggle = (id) => {
@@ -128,21 +139,26 @@ export default function UserAdd() {
   };
 
   const onModify = (id) => {
-    const selectedUser = users.find(user => user.id === id);
-    if (!selectedUser) return;
-  
-    setInputs({
-      name: selectedUser.name,
-      email: selectedUser.email,
-    });
-  
-    setUsers(prevUsers =>
-      prevUsers.map(user =>
-        user.id === id ? { ...user, name: selectedUser.name, email: selectedUser.email } : user
-      )
-    );
+    if (editingId === id) {
+      setUsers(prevUsers =>
+        prevUsers.map(user =>
+          user.id === id ? { ...user, name, email } : user
+        )
+      );
+      setEditingId(null);
+      setInputs({ name: "", email: "" });
+    } else {
+      const selectedUser = users.find(user => user.id === id);
+      if (!selectedUser) return;
+
+      setInputs({
+        name: selectedUser.name,
+        email: selectedUser.email,
+      });
+      setEditingId(id);
+    }
   };
-  
+
   return (
     <div>
       <UserInput name={name} email={email} onChange={onChange} onCreate={onCreate} />
@@ -150,4 +166,3 @@ export default function UserAdd() {
     </div>
   );
 }
-
