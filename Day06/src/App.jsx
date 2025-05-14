@@ -7,6 +7,8 @@ import CallbackTest from './CallbackTest';
 import PromiseTest from './PromiseTest';
 import AsyncAwait from './AsyncAwait';
 import AxiosTest from './AxiosTest';
+import FormPostExample from './Day08/FormPostExample';
+import QueryPre from './Day08/QueryPre';
 
 function App() {
 
@@ -25,7 +27,9 @@ function App() {
       {/* <CallbackTest /> */}
       {/* <PromiseTest /> */}
       {/* <AsyncAwait /> */}
-      <AxiosTest />
+      {/* <AxiosTest /> */}
+      {/* <FormPostExample /> */}
+      <QueryPre />
     </> 
   )
 }
